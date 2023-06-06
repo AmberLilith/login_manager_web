@@ -1,0 +1,15 @@
+.darkPageLink{
+    background-color: black;
+    color: white;
+}
+
+.darkPageLink:hover{
+    background-color: rgb(54, 51, 51);
+    color:black;
+}
+
+.darkPageLinkActive{
+    background-color: rgb(54, 51, 51);
+    color:black;
+}
+
