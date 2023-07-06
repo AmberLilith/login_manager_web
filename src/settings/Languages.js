@@ -13,20 +13,12 @@ class Languages {
                 labelPasswordText: "Senha:",
                 inputPasswordPlaceholder: "Informe a senha!",
                 inputPasswordErrorMessage: "Senha inválida!",
-                buttonLoginType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonLoginText: "Login"
-            },
-            logins: {
-                buttonNewText: "Novo",
-                buttonNewType: "primary" //Classe bootstrap: primary, secondary, danger, warning, etc...
             },
             getLogins: {
                 columnTableUserTitle: "Usuário",
                 columnTableSiteTitle: "Site",
                 columnTableManagerTitle: "Manutenção",
-                buttonUpdateType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
-                buttonUpdateText: "Atualizar",
-                buttonDeleteType: "danger", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonDeleteText: "Excluir",
                 labelNumberRegisterPerPageText: "Número de registro por página:",
                 inputNumberRegisterPerPagePlaceholder: "Digite ou escolha número",
@@ -49,7 +41,6 @@ class Languages {
                 labelObservationText: "Observações:",
                 inputObservationPlaceHolder: "Digite as observações desejadas",
                 inputObservationErrorMessage: "Digite alguma observação!",
-                buttonSaveType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Salvar"
             },
             formCreateLogin: {
@@ -69,15 +60,12 @@ class Languages {
                 labelObservationText: "Observações:",
                 inputObservationPlaceHolder: "Digite as observações desejadas",
                 inputObservationErrorMessage: "Digite alguma observação!",
-                buttonSaveType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Salvar"
             },
             formDeleteLogin: {
                 title: "Confirme exclusão",
-                Subtitle: "Deseja realmente exlcuir o login selecionado?",
-                buttonDeleteType: "btn btn-danger", //Classe bootstrap: primary, secondary, danger, warning, etc...
+                Subtitle: "Deseja realmente exlcuir o login ",
                 buttonDeleteText: "Excluir",
-                buttonCancelType: "btn btn-warning", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonCancelText: "Cancelar"
             },
             modalFormCreateLogin: {
@@ -118,13 +106,13 @@ class Languages {
                 labelEmailText: "Email:",
                 inputEmailPlaceHolder: "Informe o email do usuário",
                 inputEmailErrorMessage: "Digite um email válido!",
-                buttonSaveType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Salvar"
             },
             modalFormCreateUser: {
                 title: "Cadastrar novo Usuário",
                 buttonOpenModalType: "menuOption",
-                buttonOpenModalText: "Novo"
+                buttonOpenModalText: "Novo",
+                linkOpenModalText: "Cadastrar-se" //Para quando invés de botão for um link simples
             },
             formUpdateUser:{
                 title: "Atualizar Usuário",
@@ -143,7 +131,6 @@ class Languages {
                 labelEmailText: "Email:",
                 inputEmailPlaceHolder: "Informe o email do usuário",
                 inputEmailErrorMessage: "Digite um email válido!",
-                buttonSaveType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Salvar"
             },
             modalFormUpdateUser: {
@@ -165,7 +152,6 @@ class Languages {
                 labelPasswordText: "Password:",
                 inputPasswordPlaceholder: "Type password!",
                 inputPasswordErrorMessage: "Invalid password!",
-                buttonLoginType: "btn btn-primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonLoginText: "Login"
             },
             logins: {
@@ -176,9 +162,7 @@ class Languages {
                 columnTableUserTitle: "User",
                 columnTableSiteTitle: "Site",
                 columnTableManagerTitle: "Maintenance",
-                buttonUpdateType: "btn btn-primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonUpdateText: "Update",
-                buttonDeleteType: "btn btn-danger", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonDeleteText: "Delete",                
                 labelNumberRegisterPerPageText: "Number of registers per page",
                 inputNumberRegisterPerPagePlaceholder: "Type or choose number",
@@ -202,7 +186,6 @@ class Languages {
                 labelObservationText: "Observation:",
                 inputObservationPlaceHolder: "Type desired observations",
                 inputObservationErrorMessage: "Type some observation(s)!",
-                buttonSaveType: "btn btn-primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Save"
             },
             formCreateLogin: {
@@ -223,15 +206,12 @@ class Languages {
                 labelObservationText: "Observation:",
                 inputObservationPlaceHolder: "Type desired observations",
                 inputObservationErrorMessage: "Type some observation(s)!",
-                buttonSaveType: "btn btn-primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Save"
             },
             formDeleteLogin: {
                 title: "Confirm delation",
                 Subtitle: "Do you really want to delete the login ",
-                buttonDeleteType: "btn btn-danger", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonDeleteText: "Delete",
-                buttonCancelType: "btn btn-warning", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonCancelText: "Cancel"
             },
             modalFormCreateLogin: {
@@ -272,13 +252,12 @@ class Languages {
                 labelEmailText: "Email:",
                 inputEmailPlaceHolder: "Type the user's email",
                 inputEmailErrorMessage: "Entered user's email is invalid!",
-                buttonSaveType: "primary", //Classe bootstrap: primary, secondary, danger, warning, etc...
                 buttonSaveText: "Salvar"
             },            
             modalFormCreateUser: {
                 title: "Create New User",
                 buttonOpenModalType: "menuOption",
-                buttonOpenModalText: "New"
+                buttonOpenModalText: "New",
             },
             formUpdateUser:{
                 title: "Update User",

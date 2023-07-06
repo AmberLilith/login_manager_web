@@ -7,18 +7,20 @@ import Header from '../src/components/header/Header';
 import { Container } from 'react-bootstrap';
 import Settings from '../src/settings/Settings';
 import Themes from './settings/Themes';
+import { useState } from 'react';
 
 
 function App() {
   const language = new Languages().getAndSetStoragedLanguage();
   const settings = new Settings();
   const theme = new Themes().getAndSetStoragedTheme();
+  const [update, setUpdate] = useState(0);
   document.body.setAttribute("class",theme.body.backgroundColor)
   return (
     <div>             
         <BrowserRouter>
         <Container> 
-        <Header selectedLanguage={language} settings={settings} theme={theme}/>
+        <Header selectedLanguage={language} settings={settings} theme={theme} update={update} setUpdate={setUpdate}/>
           <Routes>
           
             <Route path="/" index element={<Auth selectedLanguage={language} settings={settings} theme={theme}/>}></Route>

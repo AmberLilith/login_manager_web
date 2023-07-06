@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Themes from '../../settings/Themes';
 import './menuOptions.css';
 
-//TODO re-renderizar esse componente quando alterar o usuário logado. não estou conseguindo fazer isso
-function MenuOptions() {
+function MenuOptions({update, setUpdate}) {
     const language = new Languages();
     const theme = new Themes();
     const [teste, setTeste] = useState();
@@ -16,17 +15,17 @@ function MenuOptions() {
     let selectedLanguage = language.getAndSetStoragedLanguage();
     let selectedTheme = theme.getAndSetStoragedTheme();
 
+   
+
     
     function changeStoragedLanguage(chosenLanguage) {
         selectedLanguage = language.getAndSetStoragedLanguage(chosenLanguage);
-        //TODO não recarregar a página mas só re-renderizar o componente
-        window.location.reload();
+        setUpdate(update + 1)
     }
 
     function changeStoragedTheme(chosenTheme) {
        selectedTheme =  theme.getAndSetStoragedTheme(chosenTheme);
-        //TODO não recarregar a página mas só re-renderizar o componente
-        window.location.reload();
+       setUpdate(update + 1)
     }
 
     function logout(){
@@ -48,30 +47,22 @@ function MenuOptions() {
         }
     }
 
-
-    return (
-        <Dropdown className='justify-content-center'>
-            <Dropdown.Toggle id="dropdown-button-options" variant="secondary" className={selectedTheme.menuOptions.dropdownToggle}>
-                <div id="loggedUser">{sessionStorage.getItem('loggedUser') ? getOnlyFirstTwoLettersFromName(sessionStorage.getItem('loggedUser')) : "Unknow"}</div>
+    function generateMenu(){
+        if(sessionStorage.getItem('loggedUser')){
+            return(
+                <Dropdown className='justify-content-center'>
+            <Dropdown.Toggle id="dropdown-button-options" variant="secondary" style={{width: 50,height: 50,borderRadius: 50, padding: 5}} className={selectedTheme.menuOptions.dropdownToggle} >
+                <div id="loggedUser" >{sessionStorage.getItem('loggedUser') ? getOnlyFirstTwoLettersFromName(sessionStorage.getItem('loggedUser')) : "Unknow"} </div>
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark">
-                <Nav className={sessionStorage.getItem('userMenuVisibility') ? sessionStorage.getItem('userMenuVisibility') : 'justify-content-center d-block'}>
+                <Nav className='justify-content-center'>
                     <NavDropdown
                         id="nav-dropdown-userMenu"
                         title={selectedLanguage.MenuOptions.navDropdownUserTitle}
                         menuVariant="dark"
                         className={selectedTheme.menuOptions.navDropdown}
                     >
-
-                        <ModalForms
-                            buttonType={selectedTheme.modalForms.buttonOpenModalMenuOption}
-                            text={selectedLanguage.modalFormCreateUser.buttonOpenModalText}
-                            title={selectedLanguage.modalFormCreateUser.title}
-                            showId="d-none"
-                            formType="createUser"
-                            selectedLanguage={selectedLanguage}
-                        />
 
 
                         <ModalForms
@@ -81,6 +72,7 @@ function MenuOptions() {
                             showId="d-none"
                             formType="updateUser"
                             selectedLanguage={selectedLanguage}
+                            theme={selectedTheme}
                         />
 
 
@@ -100,7 +92,7 @@ function MenuOptions() {
 
                 <Nav className='justify-content-center'>
                     <NavDropdown
-                        id="nav-dropdown-languages"
+                        id="nav-dropdown-themes"
                         title={selectedLanguage.MenuOptions.navDropdownThemesTitle}
                         menuVariant="dark"
                     >
@@ -117,7 +109,14 @@ function MenuOptions() {
                 </NavDropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
-    );
+            )
+        }else{
+            return ""
+        }
+    }
+
+
+    return generateMenu();
 }
 
 export default MenuOptions;

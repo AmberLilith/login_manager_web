@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom'
 
-function FormUpdateUser({closeModal, selectedLanguage}) {
-  const language = selectedLanguage.formUpdateLogin;
+function FormUpdateUser({closeModal, selectedLanguage, theme}) {
+  const language = selectedLanguage.formUpdateUser;
   const token = sessionStorage.getItem('token');
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [validated, setValidated] = useState(false);
@@ -98,20 +98,20 @@ function FormUpdateUser({closeModal, selectedLanguage}) {
       <div id='warning' className='text-danger text-center'></div>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelUserText}</Form.Label>
+        <Form.Label className={theme.formUpdateUser.labelTextColor}>{language.labelUserText}</Form.Label>
         <Form.Control  {...register("userName", { required: true })} placeholder={language.inputUserPlaceHolder} onFocus={() => unsetErro()}/>
         {errors.userName && <span className='text-danger'>{language.inputUserErrorMessage}</span>}
       </Form.Group>
       
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelNameText}</Form.Label>
+        <Form.Label className={theme.formUpdateUser.labelTextColor}>{language.labelNameText}</Form.Label>
         <Form.Control type="text" {...register("name", { required: true })} placeholder={language.inputNamePlaceHolder} />
         {errors.name && <span className='font-weight-bold text-danger'>{language.inputNameErrorMessage}</span>}
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelEmailText}</Form.Label>
+        <Form.Label className={theme.formUpdateUser.labelTextColor}>{language.labelEmailText}</Form.Label>
         <Form.Control type="email" {...register("email", { required: "Please Enter Your Email!",
         pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -120,7 +120,7 @@ function FormUpdateUser({closeModal, selectedLanguage}) {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelPasswordText}</Form.Label>
+        <Form.Label className={theme.formUpdateUser.labelTextColor}>{language.labelPasswordText}</Form.Label>
         <Form.Control type="password" {...register("pass", { required: true})} placeholder={language.inputPasswordPlaceHolder} />
         {errors.pass && <span className='text-danger'>{language.inputPasswordErrorMessage}</span>}
       </Form.Group> 

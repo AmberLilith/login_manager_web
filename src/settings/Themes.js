@@ -28,14 +28,47 @@ class Themes {
                 completeUserName: "darkCompleteUserName"
             },
             modalForms:{
+                modalHeaderBackgroudColor: "bg-dark",
+                modalBodyBackgroundColor: "bg-dark",
+                modalTitleTextColor:"text-white",
                 buttonOpenModalNew: "btn btn-warning",
                 buttonOpenModalUpdate: "btn btn-warning",
                 buttonOpenModalDelete: "btn btn-danger",
-                buttonOpenModalMenuOption: "menuOption" //Não existe a classe menuOption. Esse nome é apenas para idenficar que tipo de botão irá chamar o modal. Veja método createButton do componente ModalForms
+                buttonOpenModalMenuOption: "menuOption", //Não existe a classe menuOption. Esse nome é apenas para identificar que tipo de botão irá chamar o modal. Veja método createButton do componente ModalForms
+                buttonOpenModalLink: "link"
             },
             loginPagination:{
-                pageLink: "darkPageLink"
+                pageItem: "darkPageItem",
+                pageLink: "darkPageLink",
+                activeItem: "darkPageActiveItem"
+            },
+            formCreateLogin:{
+                formBackgroudColor: "bg-dark",
+                labelTextColor: "text-white",
+                buttonSaveType: "btn btn-warning"
+            },
+            formUpdateLogin:{
+                formBackgroudColor: "bg-dark",
+                labelTextColor: "text-white",
+                buttonSaveType: "btn btn-warning"
+            },
+            formDeleteLogin:{
+                formBackgroudColor: "bg-dark",
+                labelTextColor: "text-white",
+                buttonDeleteType: "btn btn-danger",
+                buttonCancelType: "btn btn-warning"
+            },            
+            formCreateUser:{
+                formBackgroudColor: "bg-dark",
+                labelTextColor: "text-white",
+                buttonSaveType: "btn btn-warning"
+            },            
+            formUpdateUser:{
+                formBackgroudColor: "bg-dark",
+                labelTextColor: "text-white",
+                buttonSaveType: "btn btn-warning"
             }
+
         }
 
         this.light = {
@@ -54,7 +87,7 @@ class Themes {
                 titleDefault: "w-100 text-dark text-center",
             },
             getLogins:{
-                table: "striped bordered hover",
+                table: "striped bordered table-hover",
                 buttonNew: "btn btn-primary",
                 buttonUpdate: "btn btn-primary",
                 buttonDelete: "btn btn-danger",
@@ -65,14 +98,46 @@ class Themes {
                 navDropdown: "lightNavDropdown",
                 completeUserName: "lightCompleteUserName"
             },
-            modalForms:{                
+            modalForms:{ 
+                modalHeaderBackgroudColor: "bg-light",
+                modalTitleTextColor:"text-dark",
+                modalBodyBackgroundColor: "bg-light",               
                 buttonOpenModalNew: "btn btn-primary",
                 buttonOpenModalUpdate: "btn btn-primary",
                 buttonOpenModalDelete: "btn btn-danger",
-                buttonOpenModalMenuOption: ""
+                buttonOpenModalMenuOption: "menuOption", //Não existe a classe menuOption. Esse nome é apenas para identificar que tipo de botão irá chamar o modal. Veja método createButton do componente ModalForms
+                buttonOpenModalLink: "link"
             },
             loginPagination:{
-                pageLink: "page-link"
+                pageItem: "lightPageItem",
+                pageLink: "lightPageLink",
+                activeItem: "lightPageActiveItem"
+            },
+            formCreateLogin:{
+                formBackgroudColor: "bg-light",
+                labelTextColor: "text-dark",
+                buttonSaveType: "btn btn-primary"
+            },
+            formUpdateLogin:{
+                formBackgroudColor: "bg-light",
+                labelTextColor: "text-dark",
+                buttonSaveType: "btn btn-primary"
+            },
+            formDeleteLogin:{
+                formBackgroudColor: "bg-light",
+                labelTextColor: "text-dark",
+                buttonDeleteType: "btn btn-danger",
+                buttonCancelType: "btn btn-primary"
+            },            
+            formCreateUser:{
+                formBackgroudColor: "bg-light",
+                labelTextColor: "text-dark",
+                buttonSaveType: "btn btn-primary"
+            },            
+            formUpdateUser:{
+                formBackgroudColor: "bg-light",
+                labelTextColor: "text-dark",
+                buttonSaveType: "btn btn-primary"
             }
         }
     }

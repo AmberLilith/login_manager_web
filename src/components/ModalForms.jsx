@@ -8,7 +8,7 @@ import FormCreateLogin from './logins/FormCreateLogin';
 import { NavDropdown } from 'react-bootstrap';
 import FormUpdateUser from './users/FormUpdateUser';
 
-function ModalForms({ buttonType, text, title, showId, loginId, formType, updateListOfLogins, confirmationMessage, selectedLanguage, theme }) {
+function ModalForms({ buttonType, text, title, showId, loginId, formType, updateListOfLogins, confirmationMessage, selectedLanguage, theme, selectedUserName }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,13 +17,13 @@ function ModalForms({ buttonType, text, title, showId, loginId, formType, update
   const setForm = () => {
     switch (formType) {
       case "createLogin":
-        return <FormCreateLogin updateListOfLogins={updateListOfLogins} closeModal={handleClose} selectedLanguage={selectedLanguage} />
+        return <FormCreateLogin updateListOfLogins={updateListOfLogins} closeModal={handleClose} selectedLanguage={selectedLanguage} theme={theme}/>
 
       case "updateLogin":
         return <FormUpdateLogin showId={showId} loginId={loginId} updateListOfLogins={updateListOfLogins} closeModal={handleClose} selectedLanguage={selectedLanguage} theme={theme} />
 
       case "deleteLogin":
-        return <FormDeleteLogin loginId={loginId} updateListOfLogins={updateListOfLogins} closeModal={handleClose} confirmationMessage={confirmationMessage} selectedLanguage={selectedLanguage} theme={theme} />
+        return <FormDeleteLogin loginId={loginId} updateListOfLogins={updateListOfLogins} closeModal={handleClose} confirmationMessage={confirmationMessage} selectedLanguage={selectedLanguage} theme={theme} selectedUserName={selectedUserName} />
 
       case "createUser":
         return <FormCreateUser closeModal={handleClose} selectedLanguage={selectedLanguage} theme={theme} />
@@ -41,6 +41,9 @@ function ModalForms({ buttonType, text, title, showId, loginId, formType, update
       )
     } else if (buttonType === "menuOption") {
       return <NavDropdown.Item className='text-center' onClick={handleShow} href="#">{text}</NavDropdown.Item>
+
+    }else if(buttonType === "link"){
+      return <a className='text-center' onClick={handleShow} href="#">{text}</a>
     }
   }
 
@@ -49,10 +52,10 @@ function ModalForms({ buttonType, text, title, showId, loginId, formType, update
       {createButton()}
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
+        <Modal.Header className={theme.modalForms.modalHeaderBackgroudColor} closeButton>
+          <Modal.Title className={theme.modalForms.modalTitleTextColor}>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className='bg-dark'>
+        <Modal.Body className={theme.modalForms.modalBodyBackgroundColor}>
           {setForm()}
         </Modal.Body>
       </Modal>

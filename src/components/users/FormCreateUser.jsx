@@ -1,16 +1,21 @@
 import { Col, Row, Button, Form } from 'react-bootstrap';
 import React, {useState } from 'react';
-import { useForm } from "react-hook-form";
+import { useForm  } from "react-hook-form";
 import axios from 'axios';
-import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom'
 
-function FormCreateUser({updateListOfLogins, closeModal, selectedLanguage}) {
+function FormCreateUser({closeModal, selectedLanguage, theme}) {
   const language = selectedLanguage.formCreateUser;
   const token = sessionStorage.getItem('token');
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate()
+
+  function logout(){
+    sessionStorage.clear();
+    navigate('/');
+
+}
 
 
   function setErro(message){
@@ -42,7 +47,7 @@ function FormCreateUser({updateListOfLogins, closeModal, selectedLanguage}) {
 
           if(error.response.status == 403){            
           alert("Login expirado!");
-          navigate('/');
+          logout();
           }
         })
   }
@@ -61,20 +66,20 @@ function FormCreateUser({updateListOfLogins, closeModal, selectedLanguage}) {
       <div id='warning' className='text-danger text-center'></div>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelUserText}</Form.Label>
+        <Form.Label className={theme.formCreateUser.labelTextColor}>{language.labelUserText}</Form.Label>
         <Form.Control  {...register("userName", { required: true })} placeholder={language.inputUserPlaceHolder} onFocus={() => unsetErro()}/>
         {errors.userName && <span className='text-danger'>{language.inputUserErrorMessage}</span>}
       </Form.Group>
       
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelNameText}</Form.Label>
+        <Form.Label className={theme.formCreateUser.labelTextColor}>{language.labelNameText}</Form.Label>
         <Form.Control type="text" {...register("name", { required: true })} placeholder={language.inputNamePlaceHolder} />
         {errors.name && <span className='font-weight-bold text-danger'>{language.inputNameErrorMessage}</span>}
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelEmailText}</Form.Label>
+        <Form.Label className={theme.formCreateUser.labelTextColor}>{language.labelEmailText}</Form.Label>
         <Form.Control type="email" {...register("email", { required: "Please Enter Your Email!",
         pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -83,7 +88,7 @@ function FormCreateUser({updateListOfLogins, closeModal, selectedLanguage}) {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelPasswordText}</Form.Label>
+        <Form.Label className={theme.formCreateUser.labelTextColor}>{language.labelPasswordText}</Form.Label>
         <Form.Control type="password" {...register("pass", { required: true})} placeholder={language.inputPasswordPlaceHolder} />
         {errors.pass && <span className='text-danger'>{language.inputPasswordErrorMessage}</span>}
       </Form.Group> 

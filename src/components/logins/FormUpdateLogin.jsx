@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom'
 
-function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLanguage}) {
+function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLanguage, theme}) {
   const language = selectedLanguage.formUpdateLogin;
   const token = sessionStorage.getItem('token');
   const { register, handleSubmit, setValue, unregister, getValues, formState: { errors } } = useForm();
@@ -13,9 +13,15 @@ function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLangu
   const { decodedToken, isExpired } = useJwt(token)
   const navigate = useNavigate()
 
+  function logout(){
+    sessionStorage.clear();
+    navigate('/');
+
+}
+
   if (isExpired) {
     alert("Login expirado!");
-    navigate('/');
+    logout();
   }
 
   const loadValuesFromSelectedLogin = (selectedLogin) =>{
@@ -42,7 +48,7 @@ function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLangu
 
           if(response.status == 403){            
           alert("Login expirado!");
-          navigate('/');
+          logout();
           }
 
         })
@@ -53,7 +59,7 @@ function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLangu
     } else {
 
       alert("Login expirado!");
-      navigate('/');
+      logout();
 
     }
   }
@@ -85,30 +91,30 @@ function FormUpdateLogin({loginId, updateListOfLogins, closeModal, selectedLangu
       <Form noValidate validated={validated} onSubmit={handleSubmit(onSubmit)}>
       <h6 id='sucesso' className='d-none text-center'>{language.sucessMessage}</h6>
       <Form.Group className={"mb-3 "} >
-        <Form.Label className='text-white'>{language.labelIdText}</Form.Label>
-        <Form.Control type='text' {...register("id")} readonly="true" />
+        <Form.Label className={theme.formUpdateLogin.labelTextColor}>{language.labelIdText}</Form.Label>
+        <Form.Control type='text' {...register("id")} readOnly={true} />
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelUserText}</Form.Label>
+        <Form.Label className={theme.formUpdateLogin.labelTextColor}>{language.labelUserText}</Form.Label>
         <Form.Control  {...register("userName", { required: true })} placeholder={language.inputUserPlaceHolder}/>
         {errors.userName && <span className='text-danger'>{language.inputUserErrorMessage}</span>}
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelPasswordText}</Form.Label>
+        <Form.Label className={theme.formUpdateLogin.labelTextColor}>{language.labelPasswordText}</Form.Label>
         <Form.Control type="password" {...register("password", { required: true})} placeholder={language.inputPasswordPlaceHolder} />
         {errors.password && <span className='text-danger'>{language.inputPasswordErrorMessage}</span>}
       </Form.Group> 
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelSiteText}</Form.Label>
+        <Form.Label className={theme.formUpdateLogin.labelTextColor}>{language.labelSiteText}</Form.Label>
         <Form.Control type="text" {...register("site", { required: true })} placeholder={language.inputSitePlaceHolder} />
         {errors.site && <span className='font-weight-bold text-danger'>{language.inputPasswordErrorMessage}</span>}
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label className='text-white'>{language.labelObservationText}</Form.Label>
+        <Form.Label className={theme.formUpdateLogin.labelTextColor}>{language.labelObservationText}</Form.Label>
         <Form.Control as="textarea" rows="5"{...register("observation", { required: true })} placeholder={language.inputObservationPlaceHolder} />
       </Form.Group>
       <Row>

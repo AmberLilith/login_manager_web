@@ -4,15 +4,21 @@ import axios from 'axios';
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom'
 
-function FormDeleteLogin({loginId, updateListOfLogins, closeModal, selectedLanguage}) {
+function FormDeleteLogin({loginId, updateListOfLogins, closeModal, selectedLanguage, theme, selectedUserName}) {
   const token = sessionStorage.getItem('token');
   const {handleSubmit, formState: { errors } } = useForm();
   const {isExpired } = useJwt(token)
   const navigate = useNavigate()
 
+  function logout(){
+    sessionStorage.clear();
+    navigate('/');
+
+}
+
   if (isExpired) {
     alert("Login expirado!");
-    navigate('/');
+    logout();
   }
 
   const deleteLogin = () =>{
@@ -36,13 +42,13 @@ function FormDeleteLogin({loginId, updateListOfLogins, closeModal, selectedLangu
 
             if(error.response.status === 403){            
               alert("Login expirado!");
-              navigate('/');
+              logout();
               }
         })
     } else {
 
       alert("Login expirado!");
-      navigate('/');
+      logout();
 
     }
   }
@@ -56,10 +62,10 @@ function FormDeleteLogin({loginId, updateListOfLogins, closeModal, selectedLangu
 
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-      <h6 className='text-center text-white'>{selectedLanguage.formDeleteLogin.Subtitle}</h6> 
-      <div className='text-center mt-3'>
-      <Button className={selectedLanguage.formDeleteLogin.buttonDeleteType} type='submit'>{selectedLanguage.formDeleteLogin.buttonDeleteText}</Button>
-        <Button className={selectedLanguage.formDeleteLogin.buttonCancelType} onClick={() => closeModal()} style={{marginLeft:10}}>{selectedLanguage.formDeleteLogin.buttonCancelText}</Button>
+      <h6 className={'text-center ' + theme.formDeleteLogin.labelTextColor}>{selectedLanguage.formDeleteLogin.Subtitle + selectedUserName + "?"}</h6> 
+      <div className={'text-center mt-3 ' + theme.formDeleteLogin.labelTextColor}>
+      <Button className={theme.formDeleteLogin.buttonDeleteType} type='submit'>{selectedLanguage.formDeleteLogin.buttonDeleteText}</Button>
+        <Button className={theme.formDeleteLogin.buttonCancelType} onClick={() => closeModal()} style={{marginLeft:10}}>{selectedLanguage.formDeleteLogin.buttonCancelText}</Button>
       </div>
            
     

@@ -1,15 +1,71 @@
+.darkPageItem{
+    background-color: rgb(255, 193, 7);
+    border-radius: 5px;
+    line-height:36px;
+    height: 40px;
+    width: 40px;
+    margin: 2px;
+}
+
+.darkPageActiveItem{
+    background-color: rgb(54, 51, 51);
+}
+
+.darkPageItem:hover{
+    background-color: rgb(54, 51, 51);
+    color:black;
+}
+
+.darkPageItem:active{
+    background-color: rgb(54, 51, 51);
+    color:black;
+}
+
 .darkPageLink{
-    background-color: black;
-    color: white;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
 }
 
 .darkPageLink:hover{
+    color: white;
+    padding: 10px;
+}
+
+
+
+
+.lightPageItem{
+    background-color: rgb(13, 110, 253);
+    border-radius: 5px;
+    line-height:36px;
+    height: 40px;
+    width: 40px;
+    margin: 2px;
+}
+
+.lightPageActiveItem{
+    background-color: rgb(54, 51, 51);
+}
+
+.lightPageItem:hover{
     background-color: rgb(54, 51, 51);
     color:black;
 }
 
-.darkPageLinkActive{
+.lightPageItem:active{
     background-color: rgb(54, 51, 51);
     color:black;
+}
+
+.lightPageLink{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.lightPageLink:hover{
+    color: white;
+    padding: 10px;
 }
 
